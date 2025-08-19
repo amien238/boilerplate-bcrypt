@@ -8,18 +8,19 @@ const saltRounds = 12;
 const myPlaintextPassword = 'sUperpassw0rd!';
 const someOtherPlaintextPassword = 'pass123';
 
-//START_ASYNC -do not remove notes, place code between correct pair of notes.
 const bcrypt = require('bcrypt');
-
-
-
+//START_ASYNC -do not remove notes, place code between correct pair of notes.
+bcrypt.hash(myPlaintextPassword, saltRounds, (err, hash) => {
+  if (err) throw err;
+  console.log("Hashed async:", hash);
+});
 //END_ASYNC
 
 //START_SYNC
-
-
-
+const hash = bcrypt.hashSync(myPlaintextPassword, saltRounds);
+console.log("Hashed sync:", hash);
 //END_SYNC
+
 
 
 
